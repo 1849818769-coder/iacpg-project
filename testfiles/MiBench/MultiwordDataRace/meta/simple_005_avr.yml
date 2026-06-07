@@ -1,0 +1,23 @@
+id: multiword_data_race_simple_005_avr
+case_id: simple_005
+difficulty: hard
+platform: avr
+defect_classes:
+  - multiword_data_race
+
+defects:
+  - variable: timestamp
+    pattern: multiword
+    lines: [20, 27]
+    description: 64-bit variable on 8-bit AVR; ISR has non-standard name timer_tick_handler
+
+interrupts:
+  handlers:
+    - name: timer_tick_handler
+      line: 26
+
+  switches:
+    - op: enable
+      api: sei
+      target: global
+      line: 18

@@ -1,0 +1,25 @@
+id: buffer_overflow_simple_006_arm
+case_id: simple_006
+difficulty: hard
+platform: arm
+defect_classes: []
+defects: []
+interrupts:
+  handlers:
+    - name: TIM2_IRQHandler
+      line: 40
+      priority: 2
+      vector: TIM2_IRQn
+  switches:
+    - op: enable
+      api: NVIC_EnableIRQ
+      target: TIM2_IRQn
+      line: 30
+    - op: disable
+      api: __disable_irq
+      target: global
+      line: 34
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 38

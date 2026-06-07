@@ -1,0 +1,172 @@
+{
+  "table4": {
+    "IACPG": {
+      "arm": {
+        "tp": 22,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9565,
+        "recall": 1.0,
+        "f1": 0.9778
+      },
+      "avr": {
+        "tp": 21,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.9545,
+        "recall": 0.9545,
+        "f1": 0.9545
+      },
+      "msp430": {
+        "tp": 21,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.9545,
+        "recall": 0.9545,
+        "f1": 0.9545
+      },
+      "riscv": {
+        "tp": 22,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9565,
+        "recall": 1.0,
+        "f1": 0.9778
+      },
+      "all": {
+        "tp": 86,
+        "fp": 4,
+        "fn": 2,
+        "precision": 0.9556,
+        "recall": 0.9773,
+        "f1": 0.9663
+      }
+    },
+    "CPG": {
+      "arm": {
+        "tp": 21,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.9545,
+        "recall": 0.9545,
+        "f1": 0.9545
+      },
+      "avr": {
+        "tp": 18,
+        "fp": 1,
+        "fn": 4,
+        "precision": 0.9474,
+        "recall": 0.8182,
+        "f1": 0.878
+      },
+      "msp430": {
+        "tp": 15,
+        "fp": 1,
+        "fn": 7,
+        "precision": 0.9375,
+        "recall": 0.6818,
+        "f1": 0.7895
+      },
+      "riscv": {
+        "tp": 20,
+        "fp": 2,
+        "fn": 2,
+        "precision": 0.9091,
+        "recall": 0.9091,
+        "f1": 0.9091
+      },
+      "all": {
+        "tp": 74,
+        "fp": 5,
+        "fn": 14,
+        "precision": 0.9367,
+        "recall": 0.8409,
+        "f1": 0.8862
+      }
+    },
+    "ZeroShot": {
+      "arm": {
+        "tp": 19,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.95,
+        "recall": 0.8636,
+        "f1": 0.9048
+      },
+      "avr": {
+        "tp": 18,
+        "fp": 1,
+        "fn": 4,
+        "precision": 0.9474,
+        "recall": 0.8182,
+        "f1": 0.878
+      },
+      "msp430": {
+        "tp": 17,
+        "fp": 1,
+        "fn": 5,
+        "precision": 0.9444,
+        "recall": 0.7727,
+        "f1": 0.85
+      },
+      "riscv": {
+        "tp": 21,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.9545,
+        "recall": 0.9545,
+        "f1": 0.9545
+      },
+      "all": {
+        "tp": 75,
+        "fp": 4,
+        "fn": 13,
+        "precision": 0.9494,
+        "recall": 0.8523,
+        "f1": 0.8982
+      }
+    },
+    "SpecChecker": {
+      "arm": {
+        "tp": 15,
+        "fp": 2,
+        "fn": 7,
+        "precision": 0.8824,
+        "recall": 0.6818,
+        "f1": 0.7692
+      },
+      "avr": {
+        "tp": 15,
+        "fp": 2,
+        "fn": 7,
+        "precision": 0.8824,
+        "recall": 0.6818,
+        "f1": 0.7692
+      },
+      "msp430": {
+        "tp": 15,
+        "fp": 2,
+        "fn": 7,
+        "precision": 0.8824,
+        "recall": 0.6818,
+        "f1": 0.7692
+      },
+      "riscv": {
+        "tp": 14,
+        "fp": 2,
+        "fn": 8,
+        "precision": 0.875,
+        "recall": 0.6364,
+        "f1": 0.7368
+      },
+      "all": {
+        "tp": 59,
+        "fp": 8,
+        "fn": 29,
+        "precision": 0.8806,
+        "recall": 0.6705,
+        "f1": 0.7613
+      }
+    }
+  }
+}

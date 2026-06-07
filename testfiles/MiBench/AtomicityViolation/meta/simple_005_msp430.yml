@@ -1,0 +1,33 @@
+id: atomicity_violation_simple_005_msp430
+case_id: simple_005
+difficulty: hard
+platform: msp430
+defect_classes:
+  - atomicity_violation
+
+defects:
+  - variable: shared_counter
+    pattern: RWR
+    lines: [20, 30, 25]
+    description: __disable_interrupt() placed after R1 read; R1 is exposed to ISR preemption
+
+interrupts:
+  handlers:
+    - name: TIMER0_A0_ISR
+      line: 28
+    - name: USCI_A0_ISR
+      line: 32
+
+  switches:
+    - op: enable
+      api: __enable_interrupt
+      target: global
+      line: 18
+    - op: disable
+      api: __disable_interrupt
+      target: global
+      line: 22
+    - op: enable
+      api: __enable_interrupt
+      target: global
+      line: 26

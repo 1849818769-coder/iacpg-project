@@ -1,0 +1,24 @@
+id: buffer_overflow_simple_003_msp430
+case_id: simple_003
+difficulty: easy
+platform: msp430
+defect_classes:
+- interrupt_aware_array_oob
+defects:
+- variable: simple_003_global_var1
+  pattern: check-access
+  lines:
+  - 29
+  - 27
+  - 49
+  description: Adjust函数将simple_003_global_var1设为安全值(rand()%BUFFER_SIZE)，ISR直接将var1设为BUFFER_SIZE+5(越界值)，导致数组越界访问
+interrupts:
+  handlers:
+  - name: simple_003_msp430_isr
+    line: 48
+    vector: TIMER0_A0_VECTOR
+  switches:
+  - op: enable
+    api: __enable_interrupt
+    target: global
+    line: 26

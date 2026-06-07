@@ -1,0 +1,28 @@
+id: buffer_overflow_simple_003_arm
+case_id: simple_003
+difficulty: easy
+platform: arm
+defect_classes:
+- interrupt_aware_array_oob
+defects:
+- variable: simple_003_global_var1
+  pattern: check-access
+  lines:
+  - 37
+  - 35
+  - 57
+  description: Adjust函数将simple_003_global_var1设为安全值(rand()%BUFFER_SIZE)，ISR直接将var1设为BUFFER_SIZE+5(越界值)，导致数组越界访问
+interrupts:
+  handlers:
+  - name: TIM2_IRQHandler
+    line: 56
+    vector: TIM2_IRQn
+  switches:
+  - op: enable
+    api: NVIC_EnableIRQ
+    target: TIM2_IRQn
+    line: 35
+  - op: enable
+    api: __enable_irq
+    target: global
+    line: 36

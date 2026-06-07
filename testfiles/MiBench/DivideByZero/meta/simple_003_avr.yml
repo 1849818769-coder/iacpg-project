@@ -1,0 +1,24 @@
+id: divide_by_zero_simple_003_avr
+case_id: simple_003
+difficulty: easy
+platform: avr
+defect_classes:
+- interrupt_aware_div_zero
+defects:
+- variable: open_count
+  pattern: check-access
+  lines:
+  - 38
+  - 39
+  - 64
+  description: getCloseStep在open_count>close_count时返回close_count，ISR可将close_count设为0，导致除零
+interrupts:
+  handlers:
+  - name: TIM2_vect
+    line: 64
+    vector: TIM2_vect
+  switches:
+  - op: enable
+    api: sei
+    target: global
+    line: 37

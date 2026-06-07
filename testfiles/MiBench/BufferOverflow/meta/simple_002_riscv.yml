@@ -1,0 +1,20 @@
+id: buffer_overflow_simple_002_riscv
+case_id: simple_002
+difficulty: easy
+platform: riscv
+defect_classes:
+- interrupt_aware_array_oob
+defects:
+- variable: simple_002_global_var2
+  pattern: check-access
+  lines:
+  - 31
+  - 34
+  - 44
+  description: 主函数检查simple_002_global_var2 < BUFFER_SIZE后访问数组，ISR将其设为rand()可能越界
+interrupts:
+  handlers:
+  - name: MachineTimer_IRQHandler
+    line: 43
+    vector: MachineTimer_IRQn
+  switches: []

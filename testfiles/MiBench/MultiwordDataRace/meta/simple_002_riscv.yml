@@ -1,0 +1,19 @@
+id: multiword_data_race_simple_002_riscv
+case_id: simple_002
+difficulty: easy
+platform: riscv
+defect_classes:
+- multiword_data_race
+defects:
+- variable: curr_sec
+  pattern: multiword
+  lines:
+  - 32
+  - 36
+  description: 64位变量curr_sec在ISR中由两个32位变量拼接写入，在主函数中读取，RISC-V 32位模式无法原子操作64位变量
+interrupts:
+  handlers:
+  - name: MachineTimer_IRQHandler
+    line: 35
+    vector: MachineTimer_IRQn
+  switches: []

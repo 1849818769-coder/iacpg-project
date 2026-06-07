@@ -1,0 +1,29 @@
+id: divide_by_zero_simple_005_riscv
+case_id: simple_005
+difficulty: hard
+platform: riscv
+defect_classes:
+  - interrupt_aware_div_zero
+
+defects:
+  - variable: raw_divisor
+    pattern: check-access
+    lines: [36, 38, 42]
+    description: Check reads global directly; use reads via get_divisor()
+
+interrupts:
+  handlers:
+    - name: MachineTimer_IRQHandler
+      line: 41
+      priority: 2
+      vector: MachineTimer_IRQn
+
+  switches:
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineTimer_IRQn
+      line: 32
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 33

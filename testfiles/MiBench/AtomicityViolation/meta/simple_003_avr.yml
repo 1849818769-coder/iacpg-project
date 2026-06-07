@@ -1,0 +1,25 @@
+id: easy_003_avr
+case_id: simple_003
+difficulty: easy
+platform: avr
+source: 2.1_remarks/svp_simple_008/svp_simple_008_001.c
+defect_classes:
+- atomicity_violation
+defects:
+- variable: svp_simple_008_001_global_array
+  pattern: WWR
+  lines:
+  - 17
+  - 32
+  - 28
+  description: 写写读交错导致数组元素访问存在原子性风险
+interrupts:
+  handlers:
+  - name: TIMER1_OVF_vect
+    line: 30
+    vector: TIMER1_OVF_vect
+  switches:
+  - op: enable
+    api: sei
+    target: global
+    line: 13

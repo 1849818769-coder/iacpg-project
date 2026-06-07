@@ -1,0 +1,27 @@
+id: multiword_data_race_simple_003_arm
+case_id: simple_003
+difficulty: easy
+platform: arm
+defect_classes:
+- multiword_data_race
+defects:
+- variable: broadcast_num
+  pattern: multiword
+  lines:
+  - 37
+  - 45
+  description: 64位变量broadcast_num在ISR中读-改-写，主函数在disable_irq之前读取snapshot，存在竞争窗口
+interrupts:
+  handlers:
+  - name: TIM2_IRQHandler
+    line: 44
+    vector: TIM2_IRQn
+  switches:
+  - op: disable
+    api: __disable_irq
+    target: global
+    line: 38
+  - op: enable
+    api: __enable_irq
+    target: global
+    line: 40

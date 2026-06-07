@@ -1,0 +1,32 @@
+id: easy_002_msp430
+case_id: simple_002
+difficulty: easy
+platform: msp430
+source: 2.1_remarks/svp_simple_004/svp_simple_004_001.c
+defect_classes:
+- atomicity_violation
+defects:
+- variable: svp_simple_004_001_global_var1
+  pattern: RWR
+  lines:
+  - 24
+  - 37
+  - 28
+  description: 原子性违反
+interrupts:
+  handlers:
+  - name: TIMER0_A0_ISR
+    line: 34
+    vector: TIMER0_A0_VECTOR
+  - name: PORT1_ISR
+    line: 43
+    vector: PORT1_VECTOR
+  switches:
+  - op: enable
+    api: __enable_interrupt
+    target: global
+    line: 19
+  - op: enable
+    api: __enable_interrupt
+    target: global
+    line: 41

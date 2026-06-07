@@ -1,0 +1,37 @@
+id: divide_by_zero_simple_006_arm
+case_id: simple_006
+difficulty: hard
+platform: arm
+defect_classes:
+  - interrupt_aware_div_zero
+
+defects:
+  - variable: divisor
+    pattern: check-access
+    lines: [45, 46, 53]
+    description: Guard condition safe_flag is shared; ISR clears it and sets divisor=0
+
+interrupts:
+  handlers:
+    - name: TIM2_IRQHandler
+      line: 52
+      priority: 2
+      vector: TIM2_IRQn
+
+  switches:
+    - op: enable
+      api: NVIC_EnableIRQ
+      target: TIM2_IRQn
+      line: 35
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 36
+    - op: disable
+      api: __disable_irq
+      target: global
+      line: 42
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 49

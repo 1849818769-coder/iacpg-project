@@ -1,0 +1,22 @@
+id: multiword_data_race_simple_004_avr
+case_id: simple_004
+difficulty: easy
+platform: avr
+defect_classes:
+- multiword_data_race
+defects:
+- variable: sequ
+  pattern: multiword
+  lines:
+  - 21
+  - 26
+  description: 64位变量sequ在两个ISR中读-改-写，主函数读取sequ低字节写入packet，AVR 8位总线无法原子操作64位变量
+interrupts:
+  handlers:
+  - name: TIM2_vect
+    line: 25
+    vector: TIM2_vect
+  - name: USART1_vect
+    line: 29
+    vector: USART1_vect
+  switches: []

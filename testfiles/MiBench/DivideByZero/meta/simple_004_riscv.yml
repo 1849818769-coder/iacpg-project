@@ -1,0 +1,20 @@
+id: divide_by_zero_simple_004_riscv
+case_id: simple_004
+difficulty: easy
+platform: riscv
+defect_classes:
+- interrupt_aware_div_zero
+defects:
+- variable: data
+  pattern: check-access
+  lines:
+  - 43
+  - 44
+  - 51
+  description: 主函数检查data != 0后执行100/data，ISR从用户输入覆写data可能为0
+interrupts:
+  handlers:
+  - name: MachineTimer_IRQHandler
+    line: 51
+    vector: MachineTimer_IRQn
+  switches: []

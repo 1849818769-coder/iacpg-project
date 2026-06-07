@@ -1,0 +1,614 @@
+{
+  "output_root": "/mnt/d/虚拟c盘/paper/iacpg_new/iacpg_1/results/rq1_extraction_ablation_ark_20260516_135113",
+  "pure_rule": {
+    "table2": {
+      "ISR识别": {
+        "tp": 112,
+        "fp": 0,
+        "fn": 4,
+        "precision": 1.0,
+        "recall": 0.9655,
+        "f1": 0.9825,
+        "coverage": 0.9583,
+        "covered_cases": 92,
+        "coverage_cases": 96
+      },
+      "IRQ Mask": {
+        "tp": 118,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "coverage": 1.0,
+        "covered_cases": 63,
+        "coverage_cases": 63
+      },
+      "Priority": {
+        "tp": 25,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.9259,
+        "f1": 0.9615,
+        "coverage": 0.913,
+        "covered_cases": 21,
+        "coverage_cases": 23
+      },
+      "Shared Access": {
+        "tp": 88,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "coverage": 1.0,
+        "covered_cases": 88,
+        "coverage_cases": 88
+      },
+      "Average": {
+        "precision": 1.0,
+        "recall": 0.9728,
+        "f1": 0.986
+      }
+    },
+    "missing": 0,
+    "analyzed_cases": 96,
+    "analysis_root": null,
+    "defect_types": [
+      "AtomicityViolation",
+      "BufferOverflow",
+      "DivideByZero",
+      "MultiwordDataRace"
+    ],
+    "case_ids": [
+      "simple_001",
+      "simple_002",
+      "simple_003",
+      "simple_004",
+      "simple_005",
+      "simple_006"
+    ],
+    "archs": [
+      "arm",
+      "avr",
+      "msp430",
+      "riscv"
+    ],
+    "llm_calls": 0
+  },
+  "pure_llm": {
+    "table2": {
+      "ISR识别": {
+        "tp": 95,
+        "fp": 1,
+        "fn": 21,
+        "precision": 0.9896,
+        "recall": 0.819,
+        "f1": 0.8962,
+        "coverage": 0.8478,
+        "covered_cases": 78,
+        "coverage_cases": 92
+      },
+      "IRQ Mask": {
+        "tp": 98,
+        "fp": 24,
+        "fn": 20,
+        "precision": 0.8033,
+        "recall": 0.8305,
+        "f1": 0.8167,
+        "coverage": 0.7458,
+        "covered_cases": 44,
+        "coverage_cases": 59
+      },
+      "Priority": {
+        "tp": 18,
+        "fp": 0,
+        "fn": 9,
+        "precision": 1.0,
+        "recall": 0.6667,
+        "f1": 0.8,
+        "coverage": 0.7143,
+        "covered_cases": 15,
+        "coverage_cases": 21
+      },
+      "Shared Access": {
+        "tp": 75,
+        "fp": 0,
+        "fn": 13,
+        "precision": 1.0,
+        "recall": 0.8523,
+        "f1": 0.9202,
+        "coverage": 0.8452,
+        "covered_cases": 71,
+        "coverage_cases": 84
+      },
+      "Average": {
+        "precision": 0.9482,
+        "recall": 0.7921,
+        "f1": 0.8583
+      }
+    },
+    "source": "/mnt/d/虚拟c盘/paper/iacpg_new/iacpg_1/results/rq1_llm.json",
+    "llm_calls": 96
+  },
+  "hybrid": {
+    "table2": {
+      "ISR识别": {
+        "tp": 116,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "coverage": 1.0,
+        "covered_cases": 96,
+        "coverage_cases": 96
+      },
+      "IRQ Mask": {
+        "tp": 118,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "coverage": 1.0,
+        "covered_cases": 63,
+        "coverage_cases": 63
+      },
+      "Priority": {
+        "tp": 27,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "coverage": 1.0,
+        "covered_cases": 23,
+        "coverage_cases": 23
+      },
+      "Shared Access": {
+        "tp": 88,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "coverage": 1.0,
+        "covered_cases": 88,
+        "coverage_cases": 88
+      },
+      "Average": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "missing": 0,
+    "analyzed_cases": 96,
+    "analysis_root": "/mnt/d/虚拟c盘/paper/iacpg_new/iacpg_1/results/rq1_extraction_ablation_ark_20260516_135113/hybrid",
+    "defect_types": [
+      "AtomicityViolation",
+      "BufferOverflow",
+      "DivideByZero",
+      "MultiwordDataRace"
+    ],
+    "case_ids": [
+      "simple_001",
+      "simple_002",
+      "simple_003",
+      "simple_004",
+      "simple_005",
+      "simple_006"
+    ],
+    "archs": [
+      "arm",
+      "avr",
+      "msp430",
+      "riscv"
+    ],
+    "llm_calls": 4
+  },
+  "trigger_cases": [
+    {
+      "tag": "MultiwordDataRace/simple_005/arm",
+      "defect_type": "MultiwordDataRace",
+      "case_id": "simple_005",
+      "arch": "arm",
+      "trigger_dims": [
+        "ISR识别",
+        "Priority"
+      ],
+      "rule_case_results": {
+        "ISR识别": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        "IRQ Mask": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
+        "Priority": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        "Shared Access": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    },
+    {
+      "tag": "MultiwordDataRace/simple_005/avr",
+      "defect_type": "MultiwordDataRace",
+      "case_id": "simple_005",
+      "arch": "avr",
+      "trigger_dims": [
+        "ISR识别"
+      ],
+      "rule_case_results": {
+        "ISR识别": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        "IRQ Mask": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "Priority": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "Shared Access": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    },
+    {
+      "tag": "MultiwordDataRace/simple_005/msp430",
+      "defect_type": "MultiwordDataRace",
+      "case_id": "simple_005",
+      "arch": "msp430",
+      "trigger_dims": [
+        "ISR识别"
+      ],
+      "rule_case_results": {
+        "ISR识别": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        "IRQ Mask": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        },
+        "Priority": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "Shared Access": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    },
+    {
+      "tag": "MultiwordDataRace/simple_005/riscv",
+      "defect_type": "MultiwordDataRace",
+      "case_id": "simple_005",
+      "arch": "riscv",
+      "trigger_dims": [
+        "ISR识别",
+        "Priority"
+      ],
+      "rule_case_results": {
+        "ISR识别": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        "IRQ Mask": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
+        "Priority": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        "Shared Access": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    }
+  ],
+  "api_timing": {
+    "base_url": "https://ark.cn-beijing.volces.com/api/coding",
+    "model": "minimax-m2.7",
+    "max_tokens": 4096,
+    "concurrency": 4,
+    "dry_run": false,
+    "triggered_cases": 4,
+    "completed_calls": 4,
+    "wall_sec": 30.565,
+    "calls": [
+      {
+        "tag": "MultiwordDataRace/simple_005/arm",
+        "trigger_dims": [
+          "ISR识别",
+          "Priority"
+        ],
+        "elapsed_sec": 30.554,
+        "prompt_payload": {
+          "case_tag": "MultiwordDataRace/simple_005/arm",
+          "arch": "arm",
+          "known_interrupts": [],
+          "known_mains": [
+            "simple_005_arm_main"
+          ],
+          "switches": [
+            {
+              "line": 32,
+              "operation": "enable",
+              "target": "TIM2_IRQn",
+              "function": "simple_005_arm_main"
+            },
+            {
+              "line": 33,
+              "operation": "enable",
+              "target": "",
+              "function": "simple_005_arm_main"
+            }
+          ],
+          "priorities": [],
+          "regular_functions": "- __enable_irq (line 15): void __enable_irq(void)\n- __disable_irq (line 16): void __disable_irq(void)\n- NVIC_EnableIRQ (line 17): void NVIC_EnableIRQ(IRQn_Type irqn)\n- NVIC_DisableIRQ (line 18): void NVIC_DisableIRQ(IRQn_Type irqn)\n- NVIC_SetPriority (line 19): void NVIC_SetPriority(IRQn_Type irqn, int priority)\n- system_tick_callback (line 43): void system_tick_callback(void)",
+          "extra_candidates": "- <none>",
+          "source_chars": 1069
+        },
+        "raw_response": "{\n  \"interrupt_functions\": [\n    {\n      \"name\": \"system_tick_callback\",\n      \"priority\": 2,\n      \"reason\": \"ISR for TIM2_IRQn, registered via vector table; priority set by NVIC_SetPriority(TIM2_IRQn,2)\"\n    }\n  ]\n}",
+        "parsed_response": {
+          "interrupt_functions": [
+            {
+              "name": "system_tick_callback",
+              "priority": 2,
+              "reason": "ISR for TIM2_IRQn, registered via vector table; priority set by NVIC_SetPriority(TIM2_IRQn,2)"
+            }
+          ]
+        },
+        "accepted_interrupts": [
+          {
+            "name": "system_tick_callback",
+            "priority": 2,
+            "reason": "ISR for TIM2_IRQn, registered via vector table; priority set by NVIC_SetPriority(TIM2_IRQn,2)"
+          }
+        ],
+        "extra_candidates": {},
+        "validation": {
+          "proposed_candidates": 1,
+          "accepted_candidates": 1,
+          "rejected_candidates": 0,
+          "rejected_reasons": []
+        },
+        "merge_stats": {
+          "existing_interrupts": 0,
+          "accepted_interrupts": 1,
+          "synthetic_interrupts": 0,
+          "final_interrupts": 1,
+          "final_regulars": 5,
+          "candidate_regulars": 6
+        },
+        "shared_variables_rebuilt": 1,
+        "response_status": "ok",
+        "llm_attempts": 1
+      },
+      {
+        "tag": "MultiwordDataRace/simple_005/avr",
+        "trigger_dims": [
+          "ISR识别"
+        ],
+        "elapsed_sec": 26.465,
+        "prompt_payload": {
+          "case_tag": "MultiwordDataRace/simple_005/avr",
+          "arch": "avr",
+          "known_interrupts": [],
+          "known_mains": [
+            "simple_005_avr_main"
+          ],
+          "switches": [
+            {
+              "line": 17,
+              "operation": "enable",
+              "target": "",
+              "function": "simple_005_avr_main"
+            }
+          ],
+          "priorities": [],
+          "regular_functions": "- sei (line 10): void sei(void)\n- cli (line 11): void cli(void)\n- timer_tick_handler (line 26): void timer_tick_handler(void)",
+          "extra_candidates": "- <none>",
+          "source_chars": 469
+        },
+        "raw_response": "{\n  \"interrupt_functions\": [\n    {\n      \"name\": \"timer_tick_handler\",\n      \"priority\": 0,\n      \"reason\": \"Non‑standard ISR name for timer tick interrupt\"\n    }\n  ]\n}",
+        "parsed_response": {
+          "interrupt_functions": [
+            {
+              "name": "timer_tick_handler",
+              "priority": 0,
+              "reason": "Non‑standard ISR name for timer tick interrupt"
+            }
+          ]
+        },
+        "accepted_interrupts": [
+          {
+            "name": "timer_tick_handler",
+            "priority": 0,
+            "reason": "Non‑standard ISR name for timer tick interrupt"
+          }
+        ],
+        "extra_candidates": {},
+        "validation": {
+          "proposed_candidates": 1,
+          "accepted_candidates": 1,
+          "rejected_candidates": 0,
+          "rejected_reasons": []
+        },
+        "merge_stats": {
+          "existing_interrupts": 0,
+          "accepted_interrupts": 1,
+          "synthetic_interrupts": 0,
+          "final_interrupts": 1,
+          "final_regulars": 2,
+          "candidate_regulars": 3
+        },
+        "shared_variables_rebuilt": 1,
+        "response_status": "ok",
+        "llm_attempts": 1
+      },
+      {
+        "tag": "MultiwordDataRace/simple_005/msp430",
+        "trigger_dims": [
+          "ISR识别"
+        ],
+        "elapsed_sec": 27.248,
+        "prompt_payload": {
+          "case_tag": "MultiwordDataRace/simple_005/msp430",
+          "arch": "msp430",
+          "known_interrupts": [],
+          "known_mains": [
+            "simple_005_msp430_main"
+          ],
+          "switches": [
+            {
+              "line": 17,
+              "operation": "enable",
+              "target": "",
+              "function": "simple_005_msp430_main"
+            }
+          ],
+          "priorities": [],
+          "regular_functions": "- __enable_interrupt (line 10): void __enable_interrupt(void)\n- __disable_interrupt (line 11): void __disable_interrupt(void)\n- on_timer_event (line 26): void on_timer_event(void)",
+          "extra_candidates": "- <none>",
+          "source_chars": 519
+        },
+        "raw_response": "```json\n{\n  \"interrupt_functions\": [\n    {\n      \"name\": \"on_timer_event\",\n      \"priority\": 0,\n      \"reason\": \"Non‑standard ISR name used for the timer interrupt, as indicated by the source comment\"\n    }\n  ]\n}\n```",
+        "parsed_response": {
+          "interrupt_functions": [
+            {
+              "name": "on_timer_event",
+              "priority": 0,
+              "reason": "Non‑standard ISR name used for the timer interrupt, as indicated by the source comment"
+            }
+          ]
+        },
+        "accepted_interrupts": [
+          {
+            "name": "on_timer_event",
+            "priority": 0,
+            "reason": "Non‑standard ISR name used for the timer interrupt, as indicated by the source comment"
+          }
+        ],
+        "extra_candidates": {},
+        "validation": {
+          "proposed_candidates": 1,
+          "accepted_candidates": 1,
+          "rejected_candidates": 0,
+          "rejected_reasons": []
+        },
+        "merge_stats": {
+          "existing_interrupts": 0,
+          "accepted_interrupts": 1,
+          "synthetic_interrupts": 0,
+          "final_interrupts": 1,
+          "final_regulars": 2,
+          "candidate_regulars": 3
+        },
+        "shared_variables_rebuilt": 1,
+        "response_status": "ok",
+        "llm_attempts": 1
+      },
+      {
+        "tag": "MultiwordDataRace/simple_005/riscv",
+        "trigger_dims": [
+          "ISR识别",
+          "Priority"
+        ],
+        "elapsed_sec": 13.899,
+        "prompt_payload": {
+          "case_tag": "MultiwordDataRace/simple_005/riscv",
+          "arch": "riscv",
+          "known_interrupts": [],
+          "known_mains": [
+            "simple_005_riscv_main"
+          ],
+          "switches": [
+            {
+              "line": 31,
+              "operation": "enable",
+              "target": "MachineExternal_IRQn",
+              "function": "simple_005_riscv_main"
+            },
+            {
+              "line": 32,
+              "operation": "enable",
+              "target": "",
+              "function": "simple_005_riscv_main"
+            }
+          ],
+          "priorities": [],
+          "regular_functions": "- __enable_irq (line 14): void __enable_irq(void)\n- __disable_irq (line 15): void __disable_irq(void)\n- PLIC_EnableIRQ (line 16): void PLIC_EnableIRQ(IRQn_Type irqn)\n- PLIC_DisableIRQ (line 17): void PLIC_DisableIRQ(IRQn_Type irqn)\n- PLIC_SetPriority (line 18): void PLIC_SetPriority(IRQn_Type irqn, int priority)\n- plic_irq_dispatch (line 40): void plic_irq_dispatch(void)",
+          "extra_candidates": "- <none>",
+          "source_chars": 827
+        },
+        "raw_response": "{\n  \"interrupt_functions\": [\n    {\n      \"name\": \"plic_irq_dispatch\",\n      \"priority\": 2,\n      \"reason\": \"ISR handling MachineExternal_IRQn; priority set via PLIC_SetPriority in main\"\n    }\n  ]\n}",
+        "parsed_response": {
+          "interrupt_functions": [
+            {
+              "name": "plic_irq_dispatch",
+              "priority": 2,
+              "reason": "ISR handling MachineExternal_IRQn; priority set via PLIC_SetPriority in main"
+            }
+          ]
+        },
+        "accepted_interrupts": [
+          {
+            "name": "plic_irq_dispatch",
+            "priority": 2,
+            "reason": "ISR handling MachineExternal_IRQn; priority set via PLIC_SetPriority in main"
+          }
+        ],
+        "extra_candidates": {},
+        "validation": {
+          "proposed_candidates": 1,
+          "accepted_candidates": 1,
+          "rejected_candidates": 0,
+          "rejected_reasons": []
+        },
+        "merge_stats": {
+          "existing_interrupts": 0,
+          "accepted_interrupts": 1,
+          "synthetic_interrupts": 0,
+          "final_interrupts": 1,
+          "final_regulars": 5,
+          "candidate_regulars": 6
+        },
+        "shared_variables_rebuilt": 1,
+        "response_status": "ok",
+        "llm_attempts": 1
+      }
+    ]
+  }
+}

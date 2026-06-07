@@ -1,0 +1,29 @@
+id: multiword_data_race_simple_005_riscv
+case_id: simple_005
+difficulty: hard
+platform: riscv
+defect_classes:
+  - multiword_data_race
+
+defects:
+  - variable: timestamp
+    pattern: multiword
+    lines: [33, 40]
+    description: 64-bit variable on 32-bit RISC-V; ISR has non-standard name plic_irq_dispatch
+
+interrupts:
+  handlers:
+    - name: plic_irq_dispatch
+      line: 39
+      priority: 2
+      vector: MachineExternal_IRQn
+
+  switches:
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineExternal_IRQn
+      line: 30
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 31

@@ -1,0 +1,128 @@
+[
+  {
+    "tag": "MultiwordDataRace/simple_005/arm",
+    "defect_type": "MultiwordDataRace",
+    "case_id": "simple_005",
+    "arch": "arm",
+    "trigger_dims": [
+      "ISR识别",
+      "Priority"
+    ],
+    "rule_case_results": {
+      "ISR识别": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "IRQ Mask": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0
+      },
+      "Priority": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "Shared Access": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      }
+    }
+  },
+  {
+    "tag": "MultiwordDataRace/simple_005/avr",
+    "defect_type": "MultiwordDataRace",
+    "case_id": "simple_005",
+    "arch": "avr",
+    "trigger_dims": [
+      "ISR识别"
+    ],
+    "rule_case_results": {
+      "ISR识别": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "IRQ Mask": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "Priority": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "Shared Access": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      }
+    }
+  },
+  {
+    "tag": "MultiwordDataRace/simple_005/msp430",
+    "defect_type": "MultiwordDataRace",
+    "case_id": "simple_005",
+    "arch": "msp430",
+    "trigger_dims": [
+      "ISR识别"
+    ],
+    "rule_case_results": {
+      "ISR识别": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "IRQ Mask": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      },
+      "Priority": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "Shared Access": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      }
+    }
+  },
+  {
+    "tag": "MultiwordDataRace/simple_005/riscv",
+    "defect_type": "MultiwordDataRace",
+    "case_id": "simple_005",
+    "arch": "riscv",
+    "trigger_dims": [
+      "ISR识别",
+      "Priority"
+    ],
+    "rule_case_results": {
+      "ISR识别": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "IRQ Mask": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0
+      },
+      "Priority": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1
+      },
+      "Shared Access": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      }
+    }
+  }
+]

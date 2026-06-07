@@ -1,0 +1,12 @@
+id: buffer_overflow_simple_004_avr
+case_id: simple_004
+difficulty: easy
+platform: avr
+defect_classes: []
+defects: []
+interrupts:
+  handlers:
+  - name: TIM2_vect
+    line: 25
+    vector: TIM2_vect
+  switches: []

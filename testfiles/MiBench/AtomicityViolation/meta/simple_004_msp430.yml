@@ -1,0 +1,24 @@
+id: atomicity_violation_simple_004_msp430
+case_id: simple_004
+difficulty: easy
+platform: msp430
+defect_classes:
+- atomicity_violation
+defects:
+- variable: global_var1
+  pattern: RWR
+  lines:
+  - 28
+  - 37
+  - 29
+  description: 主函数读取global_var1两次（条件判断），ISR写入global_var1，存在原子性违反
+interrupts:
+  handlers:
+  - name: simple_001_msp430_isr_1
+    line: 35
+    vector: TIMER0_A0_VECTOR
+  switches:
+  - op: enable
+    api: __enable_interrupt
+    target: global
+    line: 21

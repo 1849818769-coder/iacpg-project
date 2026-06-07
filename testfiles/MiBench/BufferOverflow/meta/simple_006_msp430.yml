@@ -1,0 +1,19 @@
+id: buffer_overflow_simple_006_msp430
+case_id: simple_006
+difficulty: hard
+platform: msp430
+defect_classes: []
+defects: []
+interrupts:
+  handlers:
+    - name: TIMER0_A0_ISR
+      line: 27
+  switches:
+    - op: disable
+      api: __disable_interrupt
+      target: global
+      line: 21
+    - op: enable
+      api: __enable_interrupt
+      target: global
+      line: 25

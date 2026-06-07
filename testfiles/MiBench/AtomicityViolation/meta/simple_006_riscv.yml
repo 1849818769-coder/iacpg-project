@@ -1,0 +1,29 @@
+id: atomicity_violation_simple_006_riscv
+case_id: simple_006
+difficulty: hard
+platform: riscv
+defect_classes:
+  - atomicity_violation
+
+defects:
+  - variable: state
+    pattern: RWR
+    lines: [33, 39, 35]
+    description: Shared variable accessed indirectly via get_state/set_state
+
+interrupts:
+  handlers:
+    - name: MachineTimer_IRQHandler
+      line: 38
+      priority: 2
+      vector: MachineTimer_IRQn
+
+  switches:
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineTimer_IRQn
+      line: 31
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 32

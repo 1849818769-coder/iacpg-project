@@ -1,0 +1,20 @@
+id: buffer_overflow_simple_001_arm
+case_id: simple_001
+difficulty: easy
+platform: arm
+defect_classes:
+- interrupt_aware_array_oob
+defects:
+- variable: simple_001_global_var
+  pattern: check-access
+  lines:
+  - 28
+  - 29
+  - 38
+  description: 主函数检查simple_001_global_var < BUFFER_SIZE后访问数组，ISR将其设为BUFFER_SIZE+1，导致越界
+interrupts:
+  handlers:
+  - name: TIM2_IRQHandler
+    line: 37
+    vector: TIM2_IRQn
+  switches: []

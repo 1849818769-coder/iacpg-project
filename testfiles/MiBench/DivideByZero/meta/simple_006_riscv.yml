@@ -1,0 +1,33 @@
+id: divide_by_zero_simple_006_riscv
+case_id: simple_006
+difficulty: hard
+platform: riscv
+defect_classes:
+  - interrupt_aware_div_zero
+
+defects:
+  - variable: divisor
+    pattern: check-access
+    lines: [40, 41, 48]
+    description: Guard condition safe_flag is shared; ISR clears it and sets divisor=0
+
+interrupts:
+  handlers:
+    - name: MachineTimer_IRQHandler
+      line: 47
+      priority: 2
+      vector: MachineTimer_IRQn
+
+  switches:
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineTimer_IRQn
+      line: 31
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 32
+    - op: disable
+      api: __disable_irq
+      target: global
+      line: 37

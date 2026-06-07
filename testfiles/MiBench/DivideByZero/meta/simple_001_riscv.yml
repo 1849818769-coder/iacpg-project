@@ -1,0 +1,23 @@
+id: divide_by_zero_simple_001_riscv
+case_id: simple_001
+difficulty: easy
+platform: riscv
+defect_classes:
+- interrupt_aware_div_zero
+defects:
+- variable: simple_001_d
+  pattern: check-access
+  lines:
+  - 31
+  - 32
+  - 36
+  description: 主函数检查simple_001_d != 0后执行除法，ISR将其递减可能变为0
+interrupts:
+  handlers:
+  - name: MachineTimer_IRQHandler
+    line: 36
+    vector: MachineTimer_IRQn
+  - name: MachineExternal_IRQHandler
+    line: 47
+    vector: MachineExternal_IRQn
+  switches: []

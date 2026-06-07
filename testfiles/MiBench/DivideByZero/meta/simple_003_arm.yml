@@ -1,0 +1,28 @@
+id: divide_by_zero_simple_003_arm
+case_id: simple_003
+difficulty: easy
+platform: arm
+defect_classes:
+- interrupt_aware_div_zero
+defects:
+- variable: open_count
+  pattern: check-access
+  lines:
+  - 48
+  - 49
+  - 74
+  description: getCloseStep在open_count>close_count时返回close_count，ISR可将close_count设为0，导致除零
+interrupts:
+  handlers:
+  - name: TIM2_IRQHandler
+    line: 74
+    vector: TIM2_IRQn
+  switches:
+  - op: enable
+    api: NVIC_EnableIRQ
+    target: TIM2_IRQn
+    line: 46
+  - op: enable
+    api: __enable_irq
+    target: global
+    line: 47

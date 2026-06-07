@@ -1,0 +1,27 @@
+id: divide_by_zero_simple_006_msp430
+case_id: simple_006
+difficulty: hard
+platform: msp430
+defect_classes:
+  - interrupt_aware_div_zero
+
+defects:
+  - variable: divisor
+    pattern: check-access
+    lines: [28, 29, 36]
+    description: Guard condition safe_flag is shared; ISR clears it and sets divisor=0
+
+interrupts:
+  handlers:
+    - name: TIMER0_A0_ISR
+      line: 35
+
+  switches:
+    - op: enable
+      api: __enable_interrupt
+      target: global
+      line: 20
+    - op: disable
+      api: __disable_interrupt
+      target: global
+      line: 25

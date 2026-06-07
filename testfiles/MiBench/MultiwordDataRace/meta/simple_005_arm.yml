@@ -1,0 +1,29 @@
+id: multiword_data_race_simple_005_arm
+case_id: simple_005
+difficulty: hard
+platform: arm
+defect_classes:
+  - multiword_data_race
+
+defects:
+  - variable: timestamp
+    pattern: multiword
+    lines: [37, 44]
+    description: 64-bit variable on 32-bit ARM; ISR has non-standard name system_tick_callback
+
+interrupts:
+  handlers:
+    - name: system_tick_callback
+      line: 43
+      priority: 2
+      vector: TIM2_IRQn
+
+  switches:
+    - op: enable
+      api: NVIC_EnableIRQ
+      target: TIM2_IRQn
+      line: 33
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 34

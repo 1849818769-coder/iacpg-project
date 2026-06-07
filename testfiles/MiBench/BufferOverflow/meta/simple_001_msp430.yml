@@ -1,0 +1,20 @@
+id: buffer_overflow_simple_001_msp430
+case_id: simple_001
+difficulty: easy
+platform: msp430
+defect_classes:
+- interrupt_aware_array_oob
+defects:
+- variable: simple_001_global_var
+  pattern: check-access
+  lines:
+  - 20
+  - 21
+  - 31
+  description: 主函数检查simple_001_global_var < BUFFER_SIZE后访问数组，ISR将其设为BUFFER_SIZE+1，导致越界
+interrupts:
+  handlers:
+  - name: simple_001_msp430_isr
+    line: 30
+    vector: TIMER0_A0_VECTOR
+  switches: []

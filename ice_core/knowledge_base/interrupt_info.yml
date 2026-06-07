@@ -1,0 +1,245 @@
+# ═════════════════════════════════════════════════════════════════════════════
+# 支持的处理器平台 / 架构一览
+# ═════════════════════════════════════════════════════════════════════════════
+#
+#  新增架构时的维护指南：
+#    1. 在 architectures 追加说明
+#    2. 在各个 patterns section 中追加对应正则配置
+# 
+architectures:
+  - id: ARM
+    desc: "Cortex-M 系列 (M0/M3/M4/M7)，CMSIS，STM32 HAL"
+  - id: AVR
+    desc: "Atmel AVR 8-bit (ATmega/ATtiny)，avr-libc，Arduino"
+  - id: MSP430
+    desc: "TI MSP430，#pragma vector + __interrupt（CCS/IAR） 或 __attribute__((interrupt))（GCC）"
+  - id: RISC-V
+    desc: "RISC-V MCU / PLIC 风格中断控制，PLIC_EnableIRQ / PLIC_SetPriority"
+  - id: Generic
+    desc: "跨平台通用 C 命名规范（POSIX-like，RTOS 通用层）"
+  - id: TestSuite
+    desc: "SVP 竞赛测试集专用命名约定"
+
+interrupt_function_patterns:
+  # ── ARM Cortex-M / CMSIS / STM32 HAL
+  - arch: ARM
+    comment: "CMSIS 标准命名：<Peripheral>IRQHandler"
+    pattern: 'void\s+(\w+IRQHandler)\s*\([^)]*\)\s*\{'
+  - arch: ARM
+    comment: "CMSIS 下划线变体：<Peripheral>_IRQHandler"
+    pattern: 'void\s+(\w+_IRQHandler)\s*\([^)]*\)\s*\{'
+  - arch: ARM
+    comment: "ARM 异常/Fault 处理：<Name>_exception_handler"
+    pattern: 'void\s+(\w+_exception_handler)\s*\([^)]*\)\s*\{'
+  # ── AVR (avr-libc / Arduino) 
+  - arch: AVR
+    comment: "avr-libc ISR 宏展开形式：ISR(<vector>)"
+    pattern: 'ISR\s*\(\s*(\w+_vect)\s*\)\s*\{'
+
+  # ── MSP430（旧版 TI CCS/IAR 风格）
+  - arch: MSP430
+    comment: "MSP430 ISR：#pragma vector + __interrupt void <NAME>(...) 同一行（函数名作为group 1）"
+    pattern: '#pragma\s+vector\s*=\s*\w+\s+__interrupt\s+void\s+(\w+)\s*\([^)]*\)\s*\{'
+  - arch: MSP430
+    comment: "MSP430 ISR：#pragma vector 和函数分开两行的形式（支持跨行匹配，函数名作为group 1）"
+    pattern: '#pragma\s+vector\s*=\s*\w+\s*\n\s*__interrupt\s+void\s+(\w+)\s*\([^)]*\)\s*\{'
+  - arch: MSP430
+    comment: "MSP430 ISR（GCC 风格）：__interrupt void <NAME>(...)"
+    pattern: '^\s*__interrupt\s+void\s+(\w+)\s*\([^)]*\)\s*\{'
+
+  # ── MSP430（现代 MSP430-GCC 风格）
+  - arch: MSP430
+    comment: "MSP430 ISR（GCC 风格）：void __attribute__((interrupt(VECTOR)))"
+    pattern: 'void\s+__attribute__\s*\(\s*\(\s*interrupt\s*\(\s*(\w+)\s*\)\s*\)\s*\)\s+(\w+)\s*\([^)]*\)\s*\{'
+
+  # ── RISC-V
+  - arch: RISC-V
+    comment: "PLIC / MCU 风格处理函数：<Source>IRQHandler"
+    pattern: 'void\s+((?:Machine|Supervisor|External|Timer|Software)\w*IRQHandler)\s*\([^)]*\)\s*\{'
+  - arch: RISC-V
+    comment: "PLIC / MCU 风格处理函数：<Source>_IRQHandler"
+    pattern: 'void\s+((?:Machine|Supervisor|External|Timer|Software)\w*_IRQHandler)\s*\([^)]*\)\s*\{'
+
+  # ── Generic（跨平台通用命名规范）
+  - arch: Generic
+    comment: "Pascal/混合命名：<Name>_Interrupt"
+    pattern: 'void\s+(\w+_Interrupt)\s*\([^)]*\)\s*\{'
+  - arch: Generic
+    comment: "Pascal/混合命名：<Name>Interrupt"
+    pattern: 'void\s+(\w+Interrupt)\s*\([^)]*\)\s*\{'
+  - arch: Generic
+    comment: "全大写 ISR 后缀：<Name>_ISR"
+    pattern: 'void\s+(\w+_ISR)\s*\([^)]*\)\s*\{'
+  - arch: Generic
+    comment: "snake_case IRQ 处理：<name>_irq_handler"
+    pattern: 'void\s+(\w+_irq_handler)\s*\([^)]*\)\s*\{'
+  - arch: Generic
+    comment: "通用中断处理：<name>_interrupt_handler"
+    pattern: 'void\s+(\w+_interrupt_handler)\s*\([^)]*\)\s*\{'
+  - arch: Generic
+    comment: "向量命名：<name>_vector"
+    pattern: 'void\s+(\w+_vector)\s*\([^)]*\)\s*\{'
+
+  # ── TestSuite（SVP 竞赛测试集专用命名约定）
+  - arch: TestSuite
+    comment: "SVP 标准 ISR 命名：<name>_isr 或 <name>_isr<N>"
+    pattern: 'void\s+(\w+_isr_?\d*)\s*\([^)]*\)\s*\{'
+
+interrupt_switch_patterns:
+  # ── ARM Cortex-M / CMSIS / STM32 HAL
+  - arch: ARM
+    comment: "CMSIS 内联函数：全局中断开关"
+    pattern: '__enable_irq\s*\(\s*\)'
+    operation: enable
+    has_target: false
+  - arch: ARM
+    comment: "CMSIS 内联函数：全局中断开关"
+    pattern: '__disable_irq\s*\(\s*\)'
+    operation: disable
+    has_target: false
+  - arch: ARM
+    comment: "CMSIS NVIC：单中断控制"
+    pattern: 'NVIC_EnableIRQ\s*\(\s*([^)]+?)\s*\)'
+    operation: enable
+    has_target: true
+  - arch: ARM
+    comment: "CMSIS NVIC：单中断控制"
+    pattern: 'NVIC_DisableIRQ\s*\(\s*([^)]+?)\s*\)'
+    operation: disable
+    has_target: true
+  - arch: ARM
+    comment: "STM32 HAL 对 NVIC 的封装"
+    pattern: 'HAL_NVIC_EnableIRQ\s*\(\s*([^)]+?)\s*\)'
+    operation: enable
+    has_target: true
+  - arch: ARM
+    comment: "STM32 HAL 对 NVIC 的封装"
+    pattern: 'HAL_NVIC_DisableIRQ\s*\(\s*([^)]+?)\s*\)'
+    operation: disable
+    has_target: true
+
+  # ── AVR (avr-libc / Arduino)
+  - arch: AVR
+    comment: "sei() = Set Enable Interrupt，全局使能"
+    pattern: '\bsei\s*\(\s*\)'
+    operation: enable
+    has_target: false
+  - arch: AVR
+    comment: "cli() = Clear Interrupt，全局禁止"
+    pattern: '\bcli\s*\(\s*\)'
+    operation: disable
+    has_target: false
+
+  # ── MSP430
+  - arch: MSP430
+    comment: "MSP430-GCC 全局使能"
+    pattern: '\b__enable_interrupt\s*\(\s*\)'
+    operation: enable
+    has_target: false
+  - arch: MSP430
+    comment: "MSP430-GCC 全局禁止"
+    pattern: '\b__disable_interrupt\s*\(\s*\)'
+    operation: disable
+    has_target: false
+  - arch: MSP430
+    comment: "MSP430-GCC 简化全局使能"
+    pattern: '\b_eint\s*\(\s*\)'
+    operation: enable
+    has_target: false
+  - arch: MSP430
+    comment: "MSP430-GCC 简化全局禁止"
+    pattern: '\b_dint\s*\(\s*\)'
+    operation: disable
+    has_target: false
+  - arch: MSP430
+    comment: "MSP430 寄存器位使能（如 IE1 |= BITx）"
+    pattern: '(IE[0-9]|IE2)\s*\|=\s*(\w+);'
+    operation: enable
+    has_target: true
+  - arch: MSP430
+    comment: "MSP430 寄存器位禁止（如 IE1 &= ~BITx）"
+    pattern: '(IE[0-9]|IE2)\s*&=\s*~(\w+);'
+    operation: disable
+    has_target: true
+
+  # ── RISC-V
+  - arch: RISC-V
+    comment: "PLIC：单中断使能"
+    pattern: 'PLIC_EnableIRQ\s*\(\s*([^)]+?)\s*\)'
+    operation: enable
+    has_target: true
+  - arch: RISC-V
+    comment: "PLIC：单中断禁止"
+    pattern: 'PLIC_DisableIRQ\s*\(\s*([^)]+?)\s*\)'
+    operation: disable
+    has_target: true
+  - arch: RISC-V
+    comment: "RISC-V 全局中断使能"
+    pattern: '__enable_irq\s*\(\s*\)'
+    operation: enable
+    has_target: false
+  - arch: RISC-V
+    comment: "RISC-V 全局中断禁止"
+    pattern: '__disable_irq\s*\(\s*\)'
+    operation: disable
+    has_target: false
+
+  # ── Generic（跨平台通用命名规范）
+  - arch: Generic
+    comment: "_irq 变体：enable_irq(n)"
+    pattern: '\benable_irq\s*\(\s*([^)]*)\s*\)'
+    operation: enable
+    has_target: true
+  - arch: Generic
+    comment: "_irq 变体：disable_irq(n)"
+    pattern: '\bdisable_irq\s*\(\s*([^)]*)\s*\)'
+    operation: disable
+    has_target: true
+  - arch: Generic
+    comment: "interrupt_enable 变体"
+    pattern: '\binterrupt_enable\s*\(\s*([^)]*)\s*\)'
+    operation: enable
+    has_target: true
+  - arch: Generic
+    comment: "interrupt_disable 变体"
+    pattern: '\binterrupt_disable\s*\(\s*([^)]*)\s*\)'
+    operation: disable
+    has_target: true
+
+  # ── TestSuite（SVP 竞赛测试集专用命名约定）
+  - arch: TestSuite
+    comment: "SVP 测试集 API"
+    pattern: '\benable_isr\s*\(\s*([^)]*)\s*\)'
+    operation: enable
+    has_target: true
+  - arch: TestSuite
+    comment: "SVP 测试集 API"
+    pattern: '\bdisable_isr\s*\(\s*([^)]*)\s*\)'
+    operation: disable
+    has_target: true
+
+interrupt_priority_patterns:
+  - arch: ARM
+    comment: "CMSIS NVIC：NVIC_SetPriority(IRQn, priority)"
+    pattern: 'NVIC_SetPriority\s*\(\s*([^,)]+?)\s*,\s*(\d+)\s*\)'
+    source_type: nvic_set
+  - arch: ARM
+    comment: "STM32 HAL：HAL_NVIC_SetPriority(IRQn, preempt, sub)"
+    pattern: 'HAL_NVIC_SetPriority\s*\(\s*([^,)]+?)\s*,\s*(\d+)\s*,\s*\d+\s*\)'
+    source_type: hal_nvic_set
+  - arch: MSP430
+    comment: "MSP430 优先级寄存器（如 P1IE,P2IE 的高低位）"
+    pattern: '(PX[0-9]|PT[0-9]|PS|PCAN)\s*=\s*([01]);'
+    source_type: msp430_priority_bit
+  - arch: RISC-V
+    comment: "PLIC：PLIC_SetPriority(IRQn, priority)"
+    pattern: 'PLIC_SetPriority\s*\(\s*([^,)]+?)\s*,\s*(\d+)\s*\)'
+    source_type: plic_set
+  - arch: Generic
+    comment: "FreeRTOS 任务优先级"
+    pattern: 'vTaskPrioritySet\s*\(\s*([^,)]+?)\s*,\s*(\d+)\s*\)'
+    source_type: freertos_set
+
+run_comment_patterns:
+  tasks: '-tasks=([\w,]+)'
+  priority: '-priority=([\d,]+)'

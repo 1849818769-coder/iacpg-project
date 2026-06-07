@@ -1,0 +1,24 @@
+id: divide_by_zero_simple_003_msp430
+case_id: simple_003
+difficulty: easy
+platform: msp430
+defect_classes:
+- interrupt_aware_div_zero
+defects:
+- variable: open_count
+  pattern: check-access
+  lines:
+  - 38
+  - 39
+  - 65
+  description: getCloseStep在open_count>close_count时返回close_count，ISR可将close_count设为0，导致除零
+interrupts:
+  handlers:
+  - name: simple_003_msp430_isr
+    line: 65
+    vector: TIMER0_A0_VECTOR
+  switches:
+  - op: enable
+    api: __enable_interrupt
+    target: global
+    line: 37

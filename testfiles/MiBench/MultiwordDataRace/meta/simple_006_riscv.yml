@@ -1,0 +1,29 @@
+id: multiword_data_race_simple_006_riscv
+case_id: simple_006
+difficulty: hard
+platform: riscv
+defect_classes:
+  - multiword_data_race
+
+defects:
+  - variable: position
+    pattern: multiword
+    lines: [38, 39, 44, 45]
+    description: Struct fields x,y read non-atomically as pair; ISR modifies both between R1 and R2
+
+interrupts:
+  handlers:
+    - name: MachineTimer_IRQHandler
+      line: 43
+      priority: 2
+      vector: MachineTimer_IRQn
+
+  switches:
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineTimer_IRQn
+      line: 35
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 36

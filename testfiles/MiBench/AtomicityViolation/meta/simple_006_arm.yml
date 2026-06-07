@@ -1,0 +1,29 @@
+id: atomicity_violation_simple_006_arm
+case_id: simple_006
+difficulty: hard
+platform: arm
+defect_classes:
+  - atomicity_violation
+
+defects:
+  - variable: state
+    pattern: RWR
+    lines: [37, 43, 39]
+    description: Shared variable accessed indirectly via get_state/set_state; ISR writes directly
+
+interrupts:
+  handlers:
+    - name: TIM2_IRQHandler
+      line: 42
+      priority: 2
+      vector: TIM2_IRQn
+
+  switches:
+    - op: enable
+      api: NVIC_EnableIRQ
+      target: TIM2_IRQn
+      line: 35
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 36

@@ -1,0 +1,33 @@
+id: buffer_overflow_simple_005_riscv
+case_id: simple_005
+difficulty: hard
+platform: riscv
+defect_classes:
+  - interrupt_aware_array_oob
+
+defects:
+  - variable: index_val
+    pattern: check-access
+    lines: [33, 34, 38]
+    description: Guard covers init only; array check-use window exposed
+
+interrupts:
+  handlers:
+    - name: MachineTimer_IRQHandler
+      line: 37
+      priority: 2
+      vector: MachineTimer_IRQn
+
+  switches:
+    - op: disable
+      api: __disable_irq
+      target: global
+      line: 29
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineTimer_IRQn
+      line: 27
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 31

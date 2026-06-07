@@ -1,0 +1,20 @@
+id: atomicity_violation_simple_004_riscv
+case_id: simple_004
+difficulty: easy
+platform: riscv
+defect_classes:
+- atomicity_violation
+defects:
+- variable: global_var1
+  pattern: RWR
+  lines:
+  - 22
+  - 30
+  - 23
+  description: 主函数读取global_var1两次（条件判断），ISR写入global_var1，存在原子性违反
+interrupts:
+  handlers:
+  - name: MachineExternal_IRQHandler
+    line: 28
+    vector: MachineExternal_IRQn
+  switches: []

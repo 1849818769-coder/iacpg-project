@@ -1,0 +1,59 @@
+{
+  "table2": {
+    "ISR识别": {
+      "tp": 116,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "IRQ Mask": {
+      "tp": 118,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "Priority": {
+      "tp": 27,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "Shared Access": {
+      "tp": 88,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "missing": 0,
+  "analyzed_cases": 96,
+  "analysis_root": "/mnt/d/虚拟c盘/paper/iacpg_new/iacpg_1/results/rq1_extraction_ablation_ark_20260516_135113/hybrid",
+  "defect_types": [
+    "AtomicityViolation",
+    "BufferOverflow",
+    "DivideByZero",
+    "MultiwordDataRace"
+  ],
+  "case_ids": [
+    "simple_001",
+    "simple_002",
+    "simple_003",
+    "simple_004",
+    "simple_005",
+    "simple_006"
+  ],
+  "archs": [
+    "arm",
+    "avr",
+    "msp430",
+    "riscv"
+  ]
+}

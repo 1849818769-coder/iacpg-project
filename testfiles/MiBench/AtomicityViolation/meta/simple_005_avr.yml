@@ -1,0 +1,33 @@
+id: atomicity_violation_simple_005_avr
+case_id: simple_005
+difficulty: hard
+platform: avr
+defect_classes:
+  - atomicity_violation
+
+defects:
+  - variable: shared_counter
+    pattern: RWR
+    lines: [22, 32, 27]
+    description: cli() placed after R1 read; R1 is exposed to ISR preemption
+
+interrupts:
+  handlers:
+    - name: TIMER1_OVF_vect
+      line: 30
+    - name: USART_RX_vect
+      line: 34
+
+  switches:
+    - op: enable
+      api: sei
+      target: global
+      line: 20
+    - op: disable
+      api: cli
+      target: global
+      line: 24
+    - op: enable
+      api: sei
+      target: global
+      line: 28

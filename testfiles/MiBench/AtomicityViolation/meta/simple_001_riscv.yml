@@ -1,0 +1,29 @@
+id: easy_001_riscv
+case_id: simple_001
+difficulty: easy
+platform: riscv
+source: 2.1_remarks/svp_simple_015/svp_simple_015_001.c
+defect_classes:
+  - atomicity_violation
+
+defects:
+  - variable: svp_simple_015_001_global_var1
+    pattern: RWR
+    lines: [30, 39, 31]
+    description: 原子性违反
+
+interrupts:
+  handlers:
+    - name: MachineTimer_IRQHandler
+      line: 37
+      priority: 2
+      vector: MachineTimer_IRQn
+  switches:
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineTimer_IRQn
+      line: 22
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 23

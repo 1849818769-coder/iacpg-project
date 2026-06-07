@@ -1,0 +1,23 @@
+id: atomicity_violation_simple_006_avr
+case_id: simple_006
+difficulty: hard
+platform: avr
+defect_classes:
+  - atomicity_violation
+
+defects:
+  - variable: state
+    pattern: RWR
+    lines: [23, 29, 25]
+    description: Shared variable accessed indirectly via get_state/set_state
+
+interrupts:
+  handlers:
+    - name: TIMER1_OVF_vect
+      line: 28
+
+  switches:
+    - op: enable
+      api: sei
+      target: global
+      line: 21

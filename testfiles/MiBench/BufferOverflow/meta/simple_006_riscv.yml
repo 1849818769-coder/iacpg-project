@@ -1,0 +1,25 @@
+id: buffer_overflow_simple_006_riscv
+case_id: simple_006
+difficulty: hard
+platform: riscv
+defect_classes: []
+defects: []
+interrupts:
+  handlers:
+    - name: MachineTimer_IRQHandler
+      line: 36
+      priority: 2
+      vector: MachineTimer_IRQn
+  switches:
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineTimer_IRQn
+      line: 27
+    - op: disable
+      api: __disable_irq
+      target: global
+      line: 30
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 34

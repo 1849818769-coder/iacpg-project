@@ -1,0 +1,19 @@
+id: buffer_overflow_simple_006_avr
+case_id: simple_006
+difficulty: hard
+platform: avr
+defect_classes: []
+defects: []
+interrupts:
+  handlers:
+    - name: TIMER1_OVF_vect
+      line: 27
+  switches:
+    - op: disable
+      api: cli
+      target: global
+      line: 21
+    - op: enable
+      api: sei
+      target: global
+      line: 25

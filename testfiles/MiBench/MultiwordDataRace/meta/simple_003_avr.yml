@@ -1,0 +1,27 @@
+id: multiword_data_race_simple_003_avr
+case_id: simple_003
+difficulty: easy
+platform: avr
+defect_classes:
+- multiword_data_race
+defects:
+- variable: broadcast_num
+  pattern: multiword
+  lines:
+  - 29
+  - 37
+  description: 64位变量broadcast_num在ISR中读-改-写，主函数在cli之前读取snapshot，存在竞争窗口
+interrupts:
+  handlers:
+  - name: TIM2_vect
+    line: 36
+    vector: TIM2_vect
+  switches:
+  - op: disable
+    api: cli
+    target: global
+    line: 30
+  - op: enable
+    api: sei
+    target: global
+    line: 32

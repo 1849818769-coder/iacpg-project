@@ -1,0 +1,23 @@
+id: multiword_data_race_simple_006_avr
+case_id: simple_006
+difficulty: hard
+platform: avr
+defect_classes:
+  - multiword_data_race
+
+defects:
+  - variable: position
+    pattern: multiword
+    lines: [24, 25, 30, 31]
+    description: Struct fields x,y (16-bit on 8-bit AVR) read non-atomically as pair
+
+interrupts:
+  handlers:
+    - name: TIMER1_OVF_vect
+      line: 29
+
+  switches:
+    - op: enable
+      api: sei
+      target: global
+      line: 22

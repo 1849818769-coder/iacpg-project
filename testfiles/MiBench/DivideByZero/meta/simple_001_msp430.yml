@@ -1,0 +1,23 @@
+id: divide_by_zero_simple_001_msp430
+case_id: simple_001
+difficulty: easy
+platform: msp430
+defect_classes:
+- interrupt_aware_div_zero
+defects:
+- variable: simple_001_d
+  pattern: check-access
+  lines:
+  - 20
+  - 21
+  - 26
+  description: 主函数检查simple_001_d != 0后执行除法，ISR将其递减可能变为0
+interrupts:
+  handlers:
+  - name: simple_001_msp430_isr_1
+    line: 26
+    vector: TIMER0_A0_VECTOR
+  - name: simple_001_msp430_isr_2
+    line: 31
+    vector: USCI_A0_VECTOR
+  switches: []

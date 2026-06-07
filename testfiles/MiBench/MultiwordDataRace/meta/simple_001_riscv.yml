@@ -1,0 +1,27 @@
+id: multiword_data_race_simple_001_riscv
+case_id: simple_001
+difficulty: easy
+platform: riscv
+defect_classes:
+- multiword_data_race
+defects:
+- variable: down_counter_ms
+  pattern: multiword
+  lines:
+  - 30
+  - 35
+  description: 64位变量down_counter_ms在主函数中写入，在ISR中读-改-写，RISC-V 32位模式无法原子操作64位变量
+interrupts:
+  handlers:
+  - name: MachineTimer_IRQHandler
+    line: 34
+    vector: MachineTimer_IRQn
+  switches:
+  - op: disable
+    api: __disable_irq
+    target: global
+    line: 27
+  - op: enable
+    api: __enable_irq
+    target: global
+    line: 29

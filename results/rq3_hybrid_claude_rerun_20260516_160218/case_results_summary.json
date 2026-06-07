@@ -1,0 +1,60 @@
+{
+  "output_root": "/mnt/d/虚拟c盘/paper/iacpg_new/iacpg_1/results/rq3_hybrid_claude_rerun_20260516_160218",
+  "cases": [
+    {
+      "tag": "MultiwordDataRace/simple_005/arm",
+      "result_exists": true,
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "main_hit": true,
+      "off_target": []
+    },
+    {
+      "tag": "MultiwordDataRace/simple_005/avr",
+      "result_exists": true,
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "main_hit": true,
+      "off_target": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_005/msp430",
+      "result_exists": true,
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "main_hit": true,
+      "off_target": []
+    },
+    {
+      "tag": "MultiwordDataRace/simple_005/riscv",
+      "result_exists": true,
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "main_hit": true,
+      "off_target": []
+    }
+  ],
+  "all_results_exist": true,
+  "all_main_hit": true,
+  "off_target_cases": [
+    {
+      "tag": "MultiwordDataRace/simple_005/avr",
+      "result_exists": true,
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "main_hit": true,
+      "off_target": [
+        "atomicity_violation"
+      ]
+    }
+  ]
+}

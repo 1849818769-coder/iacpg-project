@@ -1,0 +1,25 @@
+id: easy_001_avr
+case_id: simple_001
+difficulty: easy
+platform: avr
+source: 2.1_remarks/svp_simple_015/svp_simple_015_001.c
+defect_classes:
+- atomicity_violation
+defects:
+- variable: svp_simple_015_001_global_var1
+  pattern: RWR
+  lines:
+  - 20
+  - 29
+  - 21
+  description: 原子性违反
+interrupts:
+  handlers:
+  - name: TIMER1_OVF_vect
+    line: 27
+    vector: TIMER1_OVF_vect
+  switches:
+  - op: enable
+    api: sei
+    target: global
+    line: 13

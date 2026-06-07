@@ -1,0 +1,24 @@
+id: buffer_overflow_simple_003_avr
+case_id: simple_003
+difficulty: easy
+platform: avr
+defect_classes:
+- interrupt_aware_array_oob
+defects:
+- variable: simple_003_global_var1
+  pattern: check-access
+  lines:
+  - 29
+  - 27
+  - 48
+  description: Adjust函数将simple_003_global_var1设为安全值(rand()%BUFFER_SIZE)，ISR直接将var1设为BUFFER_SIZE+5(越界值)，导致数组越界访问
+interrupts:
+  handlers:
+  - name: TIM2_vect
+    line: 46
+    vector: TIM2_vect
+  switches:
+  - op: enable
+    api: sei
+    target: global
+    line: 26

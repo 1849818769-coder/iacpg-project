@@ -1,0 +1,19 @@
+id: multiword_data_race_simple_002_avr
+case_id: simple_002
+difficulty: easy
+platform: avr
+defect_classes:
+- multiword_data_race
+defects:
+- variable: curr_sec
+  pattern: multiword
+  lines:
+  - 24
+  - 28
+  description: 64位变量curr_sec在ISR中由两个32位变量拼接写入，在主函数中读取，AVR 8位总线无法原子操作64位变量
+interrupts:
+  handlers:
+  - name: TIM2_vect
+    line: 27
+    vector: TIM2_vect
+  switches: []

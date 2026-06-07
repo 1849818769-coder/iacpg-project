@@ -1,0 +1,23 @@
+id: divide_by_zero_simple_001_arm
+case_id: simple_001
+difficulty: easy
+platform: arm
+defect_classes:
+- interrupt_aware_div_zero
+defects:
+- variable: simple_001_d
+  pattern: check-access
+  lines:
+  - 28
+  - 29
+  - 34
+  description: 主函数检查simple_001_d != 0后执行除法，ISR将其递减可能变为0
+interrupts:
+  handlers:
+  - name: TIM2_IRQHandler
+    line: 33
+    vector: TIM2_IRQn
+  - name: USART1_IRQHandler
+    line: 37
+    vector: USART1_IRQn
+  switches: []

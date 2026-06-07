@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+.claude/worktrees/
+
+# Generated analysis outputs
+improved_interrupt_analysis/
+iacpg_artifacts/
+tool_call_log*
+detection_result*.json
+detection_report*.md
+cpg.bin
+*.dot
+*.graphml
+*.log
+
+# Joern / workspace outputs
+workspace/
+workspaces/
+.joern/
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+
+# Archives and large external tools
+*.zip
+*.rar
+SpecChecker-Int-main/

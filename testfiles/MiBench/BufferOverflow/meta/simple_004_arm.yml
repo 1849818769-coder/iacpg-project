@@ -1,0 +1,12 @@
+id: buffer_overflow_simple_004_arm
+case_id: simple_004
+difficulty: easy
+platform: arm
+defect_classes: []
+defects: []
+interrupts:
+  handlers:
+  - name: TIM2_IRQHandler
+    line: 33
+    vector: TIM2_IRQn
+  switches: []

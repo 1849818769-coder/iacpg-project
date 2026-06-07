@@ -1,0 +1,23 @@
+id: multiword_data_race_simple_005_msp430
+case_id: simple_005
+difficulty: hard
+platform: msp430
+defect_classes:
+  - multiword_data_race
+
+defects:
+  - variable: timestamp
+    pattern: multiword
+    lines: [19, 26]
+    description: 64-bit variable on 16-bit MSP430; ISR has non-standard name on_timer_event
+
+interrupts:
+  handlers:
+    - name: on_timer_event
+      line: 25
+
+  switches:
+    - op: enable
+      api: __enable_interrupt
+      target: global
+      line: 17

@@ -1,0 +1,23 @@
+id: divide_by_zero_simple_005_avr
+case_id: simple_005
+difficulty: hard
+platform: avr
+defect_classes:
+  - interrupt_aware_div_zero
+
+defects:
+  - variable: raw_divisor
+    pattern: check-access
+    lines: [24, 26, 30]
+    description: Check reads global directly; use reads via get_divisor()
+
+interrupts:
+  handlers:
+    - name: TIMER1_OVF_vect
+      line: 29
+
+  switches:
+    - op: enable
+      api: sei
+      target: global
+      line: 20

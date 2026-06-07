@@ -1,0 +1,22 @@
+id: multiword_data_race_simple_004_msp430
+case_id: simple_004
+difficulty: easy
+platform: msp430
+defect_classes:
+- multiword_data_race
+defects:
+- variable: sequ
+  pattern: multiword
+  lines:
+  - 21
+  - 27
+  description: 64位变量sequ在两个ISR中读-改-写，主函数读取sequ低字节写入packet，MSP430 16位总线无法原子操作64位变量
+interrupts:
+  handlers:
+  - name: simple_004_msp430_isr_1
+    line: 26
+    vector: TIMER0_A0_VECTOR
+  - name: simple_004_msp430_isr_2
+    line: 31
+    vector: USCI_A0_VECTOR
+  switches: []

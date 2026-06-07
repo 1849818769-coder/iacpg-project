@@ -1,0 +1,23 @@
+id: divide_by_zero_simple_002_arm
+case_id: simple_002
+difficulty: easy
+platform: arm
+defect_classes:
+- interrupt_aware_div_zero
+defects:
+- variable: simple_002_x
+  pattern: check-access
+  lines:
+  - 29
+  - 30
+  - 34
+  description: 主函数检查x < y后计算1/(x-y)，ISR修改x和y可能使x-y等于0
+interrupts:
+  handlers:
+  - name: TIM2_IRQHandler
+    line: 34
+    vector: TIM2_IRQn
+  - name: USART1_IRQHandler
+    line: 39
+    vector: USART1_IRQn
+  switches: []

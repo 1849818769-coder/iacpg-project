@@ -1,0 +1,29 @@
+id: multiword_data_race_simple_006_arm
+case_id: simple_006
+difficulty: hard
+platform: arm
+defect_classes:
+  - multiword_data_race
+
+defects:
+  - variable: position
+    pattern: multiword
+    lines: [42, 43, 48, 49]
+    description: Struct fields x,y read non-atomically as pair; ISR modifies both between R1 and R2
+
+interrupts:
+  handlers:
+    - name: TIM2_IRQHandler
+      line: 47
+      priority: 2
+      vector: TIM2_IRQn
+
+  switches:
+    - op: enable
+      api: NVIC_EnableIRQ
+      target: TIM2_IRQn
+      line: 39
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 40

@@ -1,0 +1,29 @@
+id: easy_003_riscv
+case_id: simple_003
+difficulty: easy
+platform: riscv
+source: 2.1_remarks/svp_simple_008/svp_simple_008_001.c
+defect_classes:
+  - atomicity_violation
+
+defects:
+  - variable: svp_simple_008_001_global_array
+    pattern: WWR
+    lines: [27, 41, 37]
+    description: 写写读交错导致数组元素访问存在原子性风险
+
+interrupts:
+  handlers:
+    - name: MachineExternal_IRQHandler
+      line: 39
+      priority: 2
+      vector: MachineExternal_IRQn
+  switches:
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineExternal_IRQn
+      line: 22
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 23

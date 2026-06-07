@@ -1,0 +1,12 @@
+id: buffer_overflow_simple_004_riscv
+case_id: simple_004
+difficulty: easy
+platform: riscv
+defect_classes: []
+defects: []
+interrupts:
+  handlers:
+  - name: MachineTimer_IRQHandler
+    line: 33
+    vector: MachineTimer_IRQn
+  switches: []

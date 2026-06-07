@@ -1,0 +1,27 @@
+id: buffer_overflow_simple_005_avr
+case_id: simple_005
+difficulty: hard
+platform: avr
+defect_classes:
+  - interrupt_aware_array_oob
+
+defects:
+  - variable: index_val
+    pattern: check-access
+    lines: [24, 25, 29]
+    description: Guard covers init only; array check-use window exposed
+
+interrupts:
+  handlers:
+    - name: TIMER1_OVF_vect
+      line: 28
+
+  switches:
+    - op: disable
+      api: cli
+      target: global
+      line: 20
+    - op: enable
+      api: sei
+      target: global
+      line: 22

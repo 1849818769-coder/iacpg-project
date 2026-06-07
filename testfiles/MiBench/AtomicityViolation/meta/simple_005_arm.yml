@@ -1,0 +1,41 @@
+id: atomicity_violation_simple_005_arm
+case_id: simple_005
+difficulty: hard
+platform: arm
+defect_classes:
+  - atomicity_violation
+
+defects:
+  - variable: shared_counter
+    pattern: RWR
+    lines: [43, 56, 45]
+    description: Selective masking only disables TIM2; USART1 (higher priority) can still preempt R-M-W sequence
+
+interrupts:
+  handlers:
+    - name: TIM2_IRQHandler
+      line: 49
+      priority: 3
+      vector: TIM2_IRQn
+    - name: USART1_IRQHandler
+      line: 54
+      priority: 1
+      vector: USART1_IRQn
+
+  switches:
+    - op: disable
+      api: NVIC_DisableIRQ
+      target: TIM2_IRQn
+      line: 41
+    - op: enable
+      api: NVIC_EnableIRQ
+      target: TIM2_IRQn
+      line: 47
+    - op: enable
+      api: NVIC_EnableIRQ
+      target: USART1_IRQn
+      line: 38
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 39

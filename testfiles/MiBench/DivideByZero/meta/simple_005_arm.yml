@@ -1,0 +1,29 @@
+id: divide_by_zero_simple_005_arm
+case_id: simple_005
+difficulty: hard
+platform: arm
+defect_classes:
+  - interrupt_aware_div_zero
+
+defects:
+  - variable: raw_divisor
+    pattern: check-access
+    lines: [41, 44, 48]
+    description: Check reads global directly; use reads via get_divisor(); ISR sets to 0 in between
+
+interrupts:
+  handlers:
+    - name: TIM2_IRQHandler
+      line: 47
+      priority: 2
+      vector: TIM2_IRQn
+
+  switches:
+    - op: enable
+      api: NVIC_EnableIRQ
+      target: TIM2_IRQn
+      line: 37
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 38

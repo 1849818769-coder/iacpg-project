@@ -1,0 +1,41 @@
+id: atomicity_violation_simple_005_riscv
+case_id: simple_005
+difficulty: hard
+platform: riscv
+defect_classes:
+  - atomicity_violation
+
+defects:
+  - variable: shared_counter
+    pattern: RWR
+    lines: [38, 49, 40]
+    description: Selective masking only disables MachineTimer; MachineExternal can still preempt R-M-W
+
+interrupts:
+  handlers:
+    - name: MachineTimer_IRQHandler
+      line: 44
+      priority: 3
+      vector: MachineTimer_IRQn
+    - name: MachineExternal_IRQHandler
+      line: 48
+      priority: 1
+      vector: MachineExternal_IRQn
+
+  switches:
+    - op: disable
+      api: PLIC_DisableIRQ
+      target: MachineTimer_IRQn
+      line: 36
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineExternal_IRQn
+      line: 35
+    - op: enable
+      api: PLIC_EnableIRQ
+      target: MachineTimer_IRQn
+      line: 42
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 34

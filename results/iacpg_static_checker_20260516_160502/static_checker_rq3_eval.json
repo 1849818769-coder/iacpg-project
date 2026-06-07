@@ -1,0 +1,911 @@
+{
+  "output_root": "/mnt/d/虚拟c盘/paper/iacpg_new/iacpg_1/results/iacpg_static_checker_20260516_160502",
+  "mode": "full_or_limited",
+  "case_count": 96,
+  "metrics": {
+    "arm": {
+      "TP": 14,
+      "FP": 2,
+      "FN": 8,
+      "P": 0.875,
+      "R": 0.6364,
+      "F1": 0.7368
+    },
+    "avr": {
+      "TP": 15,
+      "FP": 4,
+      "FN": 7,
+      "P": 0.7895,
+      "R": 0.6818,
+      "F1": 0.7317
+    },
+    "msp430": {
+      "TP": 15,
+      "FP": 4,
+      "FN": 7,
+      "P": 0.7895,
+      "R": 0.6818,
+      "F1": 0.7317
+    },
+    "riscv": {
+      "TP": 13,
+      "FP": 2,
+      "FN": 9,
+      "P": 0.8667,
+      "R": 0.5909,
+      "F1": 0.7027
+    },
+    "all": {
+      "TP": 57,
+      "FP": 12,
+      "FN": 31,
+      "P": 0.8261,
+      "R": 0.6477,
+      "F1": 0.7261
+    }
+  },
+  "cases": [
+    {
+      "tag": "AtomicityViolation/simple_001/arm",
+      "hit_types": [
+        "atomicity_violation"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_001/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_001/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_001/riscv",
+      "hit_types": [
+        "atomicity_violation"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_002/arm",
+      "hit_types": [
+        "atomicity_violation"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_002/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_002/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_002/riscv",
+      "hit_types": [
+        "atomicity_violation"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_003/arm",
+      "hit_types": [],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_003/avr",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_003/msp430",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_003/riscv",
+      "hit_types": [],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_004/arm",
+      "hit_types": [
+        "atomicity_violation"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_004/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_004/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_004/riscv",
+      "hit_types": [],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_005/arm",
+      "hit_types": [],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_005/avr",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_005/msp430",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_005/riscv",
+      "hit_types": [],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_006/arm",
+      "hit_types": [],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_006/avr",
+      "hit_types": [],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_006/msp430",
+      "hit_types": [],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "AtomicityViolation/simple_006/riscv",
+      "hit_types": [],
+      "expected": [
+        "atomicity_violation"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_001/arm",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_001/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_001/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_001/riscv",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_002/arm",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_002/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_002/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_002/riscv",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_003/arm",
+      "hit_types": [],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_003/avr",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_003/msp430",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_003/riscv",
+      "hit_types": [],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_004/arm",
+      "hit_types": [],
+      "expected": []
+    },
+    {
+      "tag": "BufferOverflow/simple_004/avr",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": []
+    },
+    {
+      "tag": "BufferOverflow/simple_004/msp430",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": []
+    },
+    {
+      "tag": "BufferOverflow/simple_004/riscv",
+      "hit_types": [],
+      "expected": []
+    },
+    {
+      "tag": "BufferOverflow/simple_005/arm",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_005/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_005/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_005/riscv",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob"
+      ],
+      "expected": [
+        "interrupt_aware_array_oob"
+      ]
+    },
+    {
+      "tag": "BufferOverflow/simple_006/arm",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob"
+      ],
+      "expected": []
+    },
+    {
+      "tag": "BufferOverflow/simple_006/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob",
+        "multiword_data_race"
+      ],
+      "expected": []
+    },
+    {
+      "tag": "BufferOverflow/simple_006/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob",
+        "multiword_data_race"
+      ],
+      "expected": []
+    },
+    {
+      "tag": "BufferOverflow/simple_006/riscv",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_array_oob"
+      ],
+      "expected": []
+    },
+    {
+      "tag": "DivideByZero/simple_001/arm",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_001/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_001/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_001/riscv",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_002/arm",
+      "hit_types": [
+        "atomicity_violation"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_002/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_002/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_002/riscv",
+      "hit_types": [
+        "atomicity_violation"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_003/arm",
+      "hit_types": [],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_003/avr",
+      "hit_types": [],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_003/msp430",
+      "hit_types": [],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_003/riscv",
+      "hit_types": [],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_004/arm",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_004/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_004/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_004/riscv",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_005/arm",
+      "hit_types": [],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_005/avr",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_005/msp430",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_005/riscv",
+      "hit_types": [],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_006/arm",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_006/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_006/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "DivideByZero/simple_006/riscv",
+      "hit_types": [
+        "atomicity_violation",
+        "interrupt_aware_div_zero"
+      ],
+      "expected": [
+        "interrupt_aware_div_zero"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_001/arm",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_001/avr",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_001/msp430",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_001/riscv",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_002/arm",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_002/avr",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_002/msp430",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_002/riscv",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_003/arm",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_003/avr",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_003/msp430",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_003/riscv",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_004/arm",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_004/avr",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_004/msp430",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_004/riscv",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_005/arm",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_005/avr",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_005/msp430",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_005/riscv",
+      "hit_types": [
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_006/arm",
+      "hit_types": [
+        "atomicity_violation"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_006/avr",
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_006/msp430",
+      "hit_types": [
+        "atomicity_violation",
+        "multiword_data_race"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    },
+    {
+      "tag": "MultiwordDataRace/simple_006/riscv",
+      "hit_types": [
+        "atomicity_violation"
+      ],
+      "expected": [
+        "multiword_data_race"
+      ]
+    }
+  ]
+}

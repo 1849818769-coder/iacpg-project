@@ -1,0 +1,33 @@
+id: buffer_overflow_simple_005_arm
+case_id: simple_005
+difficulty: hard
+platform: arm
+defect_classes:
+  - interrupt_aware_array_oob
+
+defects:
+  - variable: index_val
+    pattern: check-access
+    lines: [38, 39, 43]
+    description: Guard covers init only; array check-use window exposed to ISR
+
+interrupts:
+  handlers:
+    - name: TIM2_IRQHandler
+      line: 42
+      priority: 2
+      vector: TIM2_IRQn
+
+  switches:
+    - op: disable
+      api: __disable_irq
+      target: global
+      line: 33
+    - op: enable
+      api: __enable_irq
+      target: global
+      line: 35
+    - op: enable
+      api: NVIC_EnableIRQ
+      target: TIM2_IRQn
+      line: 30
