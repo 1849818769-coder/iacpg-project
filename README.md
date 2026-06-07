@@ -140,10 +140,13 @@ If you do not want to configure Claude Code to run `python mcp_server.py` direct
 python -m PyInstaller --clean --noconfirm packaging/iacpg_mcp.spec
 ```
 
+For convenience, this repository also provides a Windows package at `packaged/iacpg-mcp-windows.zip`. This package bundles the MCP server, Python dependencies, `ice_core/`, and `scripts/`, but it does not bundle Joern or Java. Joern-dependent tools require a working Joern installation in the same runtime environment. The paper experiments were run with the Linux/WSL workflow and externally configured Joern, which remains the recommended reproduction path.
+
 See [docs/PACKAGING.md](docs/PACKAGING.md) and the templates in `config/` for Windows and Linux MCP configuration examples.
 
 ## Notes
 
 - SpecChecker-Int is not bundled because it is an external tool; scripts for running it are included for reproducibility.
+- Joern and Java are not bundled; configure them separately through `JOERN_HOME`, `JAVA_HOME`, and `PATH`.
 - API keys, local Claude settings, generated workspaces, and raw tool-call logs are excluded.
 - This repository is an artifact release for research reproduction, not a polished end-user product.

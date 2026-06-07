@@ -144,8 +144,11 @@ python -m PyInstaller --clean --noconfirm packaging/iacpg_mcp.spec
 
 Windows 需要在 Windows Python 下打包，生成 `dist\\iacpg-mcp\\iacpg-mcp.exe`；Linux/WSL 下会生成 Linux 可执行文件。详细说明见 [docs/PACKAGING.md](docs/PACKAGING.md)，配置模板见 `config/`。
 
+为了方便使用，仓库中也提供了 Windows 打包产物 `packaged/iacpg-mcp-windows.zip`。这个包只包含 MCP server、Python 依赖、`ice_core/` 和 `scripts/`，不包含 Joern 或 Java。所有依赖 Joern 的工具仍然要求在同一个运行环境中配置好 Joern。论文实验使用的是 Linux/WSL + 外部 Joern 的脚本工作流，这仍然是推荐的复现方式。
+
 ## 注意事项
 
 - 本仓库不包含 SpecChecker-Int 工具本体，只保留了运行脚本。
+- 本仓库不包含 Joern 和 Java，需要通过 `JOERN_HOME`、`JAVA_HOME` 和 `PATH` 单独配置。
 - API key、本地 Claude 配置、生成 workspace 和原始工具调用日志均已排除。
 - 本仓库用于论文复现和研究参考，不是面向终端用户的完整产品。
