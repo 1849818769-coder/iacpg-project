@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "iacpg": {
+      "command": "/path/to/iacpg-project/dist/iacpg-mcp/iacpg-mcp",
+      "env": {
+        "JOERN_HOME": "/path/to/joern-cli",
+        "JAVA_HOME": "/path/to/jdk-17"
+      }
+    }
+  }
+}

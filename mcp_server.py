@@ -11,6 +11,7 @@ import sys
 import subprocess
 import time
 import functools
+import runpy
 from contextlib import contextmanager
 from pathlib import Path
 
@@ -34,7 +35,20 @@ def _run_in_thread(fn, *args, **kwargs):
 
 from mcp.server.fastmcp import FastMCP
 
-_SERVER_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def _resource_root() -> Path:
+    """返回运行时资源根目录。
+
+    普通源码运行时，资源根目录就是仓库根目录；PyInstaller 打包运行时，
+    `sys._MEIPASS` 指向解包后的 `_internal` 资源目录，里面包含 scripts/
+    和 ice_core/。
+    """
+    if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+        return Path(sys._MEIPASS).resolve()
+    return Path(__file__).resolve().parent
+
+
+_SERVER_DIR = str(_resource_root())
 if _SERVER_DIR not in sys.path:
     sys.path.insert(0, _SERVER_DIR)
 
@@ -114,11 +128,18 @@ def _chdir(path: str):
 
 def _run_json_python(script_path: Path, *args: str) -> dict:
     current_env = os.environ.get("CONDA_DEFAULT_ENV")
-    if current_env == CONDA_ENV:
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(ROOT) + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+
+    if getattr(sys, "frozen", False):
+        cmd = [sys.executable, "__run_script__", str(script_path), *args]
+    elif os.environ.get("IACPG_PYTHON"):
+        cmd = [os.environ["IACPG_PYTHON"], str(script_path), *args]
+    elif current_env == CONDA_ENV:
         cmd = [sys.executable, str(script_path), *args]
     else:
         cmd = [CONDA, "run", "--no-capture-output", "-n", CONDA_ENV, "python", str(script_path), *args]
-    proc = subprocess.run(cmd, capture_output=True, text=True)
+    proc = subprocess.run(cmd, capture_output=True, text=True, env=env)
     return {
         "ok": proc.returncode == 0,
         "returncode": proc.returncode,
@@ -707,4 +728,9 @@ def joern_identifiers(project_path: str, project_name: str = "") -> dict:
 
 
 if __name__ == "__main__":
-    mcp.run()
+    if len(sys.argv) >= 3 and sys.argv[1] == "__run_script__":
+        script = sys.argv[2]
+        sys.argv = [script, *sys.argv[3:]]
+        runpy.run_path(script, run_name="__main__")
+    else:
+        mcp.run()

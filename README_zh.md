@@ -134,6 +134,16 @@ bash scripts/with_local_env.sh python scripts/eval_rq3.py \
 
 这些 skill 会调用 `mcp_server.py` 暴露的工具。请注意，Codex 或普通 Python 程序不会自动触发这些 skill，必须通过 Claude Code 或对应 wrapper 调用。
 
+## 打包 MCP Server
+
+如果不想在 Claude Code MCP 配置中直接写 `python mcp_server.py`，可以用 PyInstaller 打包成可执行文件，然后在 MCP 配置里引用这个可执行文件：
+
+```bash
+python -m PyInstaller --clean --noconfirm packaging/iacpg_mcp.spec
+```
+
+Windows 需要在 Windows Python 下打包，生成 `dist\\iacpg-mcp\\iacpg-mcp.exe`；Linux/WSL 下会生成 Linux 可执行文件。详细说明见 [docs/PACKAGING.md](docs/PACKAGING.md)，配置模板见 `config/`。
+
 ## 注意事项
 
 - 本仓库不包含 SpecChecker-Int 工具本体，只保留了运行脚本。

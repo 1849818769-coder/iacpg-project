@@ -46,3 +46,10 @@ workspaces/
 *.zip
 *.rar
 SpecChecker-Int-main/
+
+# PyInstaller
+build/
+dist/
+*.spec.bak
+!packaged/
+!packaged/*.zip

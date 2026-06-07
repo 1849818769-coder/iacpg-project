@@ -132,6 +132,16 @@ The release includes two project skills:
 
 These skills call the tools exposed by `mcp_server.py`. They are intended to be used through Claude Code or the provided shell wrapper.
 
+## Packaged MCP Server
+
+If you do not want to configure Claude Code to run `python mcp_server.py` directly, package the MCP server with PyInstaller and reference the executable in Claude Code MCP settings:
+
+```bash
+python -m PyInstaller --clean --noconfirm packaging/iacpg_mcp.spec
+```
+
+See [docs/PACKAGING.md](docs/PACKAGING.md) and the templates in `config/` for Windows and Linux MCP configuration examples.
+
 ## Notes
 
 - SpecChecker-Int is not bundled because it is an external tool; scripts for running it are included for reproducibility.
